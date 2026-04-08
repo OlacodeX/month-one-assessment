@@ -239,6 +239,7 @@ resource "aws_instance" "web1" {
   instance_type = var.web_instance_type
   subnet_id     = aws_subnet.private_1.id
   security_groups = [aws_security_group.web_sg.id]
+  key_name = var.key_name
   user_data     = file("user_data/web_server_setup.sh")
 }
 
@@ -247,6 +248,7 @@ resource "aws_instance" "web2" {
   instance_type = var.web_instance_type
   subnet_id     = aws_subnet.private_2.id
   security_groups = [aws_security_group.web_sg.id]
+  key_name = var.key_name
   user_data     = file("user_data/web_server_setup.sh")
 }
 
@@ -255,6 +257,7 @@ resource "aws_instance" "db" {
   instance_type = var.db_instance_type
   subnet_id     = aws_subnet.private_1.id
   security_groups = [aws_security_group.db_sg.id]
+  key_name = var.key_name
   user_data     = file("user_data/db_server_setup.sh")
 }
 
